@@ -11,7 +11,7 @@ CORS(app)
 # set up the database with sqlite
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ['database_link'] if 'database_link' in os.environ else "postgresql://somelink"
 
-db = SQLAlchemy(app)
+db = SQLAlchemy(app, engine_options={"pool_recycle": 55})
 
 
 all_results_fields = {
