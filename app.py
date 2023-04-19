@@ -27,8 +27,6 @@ class ResultsModel(db.Model):
     unchecked = db.Column(db.Integer, nullable=False)
     responses = db.Column(db.Integer, nullable=False)
 
-# db.create_all()
-
 
 task_post_args = reqparse.RequestParser()
 task_post_args.add_argument('results', type=dict, required=True, help="No results are provided")
@@ -101,5 +99,6 @@ api.add_resource(AllResults, '/results/')
 
 
 if __name__ == '__main__':
-    
+    # with app.app_context():
+    #     db.create_all()
     app.run(debug=True)
