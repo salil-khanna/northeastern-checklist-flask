@@ -2,13 +2,14 @@ from flask import Flask
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+import os
 
 # set up an api with get and post request
 app = Flask(__name__)
 api = Api(app)
 CORS(app)
 # set up the database with sqlite
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://somelink"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ('database_link') or "postgresql://somelink"
 
 db = SQLAlchemy(app)
 
