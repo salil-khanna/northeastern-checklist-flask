@@ -9,7 +9,7 @@ app = Flask(__name__)
 api = Api(app)
 CORS(app)
 # set up the database with sqlite
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ('database_link') or "postgresql://somelink"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ['database_link'] if 'database_link' in os.environ else "postgresql://somelink"
 
 db = SQLAlchemy(app)
 
